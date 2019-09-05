@@ -3,6 +3,11 @@ import App.RedNeuronal as Red
 import matplotlib.pyplot as plt
 import numpy as np
 
+""" Armado del dataset
+    n : cantidad de puntos
+    f : distancia entre los grupos de circulos
+    desorde : desorden de los puntos.
+"""
 n=200
 f=0.4
 desorden = 0.1
@@ -11,12 +16,18 @@ X,Y,p=data.getDataset(n,f,desorden)
 Y=Y[:,np.newaxis]
 #data.show(X,Y)                 #Para graficar los datos de entrada.
 
-#Variables de la red.
-arq= [p,8,1]                    #capas
-epocas=2000                    #cant iteraciones
-alfa= 0.01                     #aprendizaje
-act='sigmoide'                  #funcion de activacion
-loss=[]                         #Array de error de entrenamiento.
+"""Variables de la red.
+    arq : refleja las capas de la red con sus neuronas, se recomienda que la ultima capa tenga 1 neurona
+    epocas : cantidad de iteraciones
+    alfa : valor de aprendizaje ( 0< alfa < 1 ) 
+    act : funcion de activacion de la red. Solo esta disponible sigmoide
+    loss : Array de error de entrenamiento.
+"""
+arq= [p,8,1]
+epocas=2000
+alfa= 0.01
+act='sigmoide'
+loss=[]
 
 
 neural_n = Red.create_net(arq,act)
